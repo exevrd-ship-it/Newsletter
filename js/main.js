@@ -1,35 +1,71 @@
 /* ==========================================================================
-   The Sunday Ledger — site script
-   Edit SITE below to change the newsletter name, author, etc. everywhere.
+   Site script. You normally do NOT need to edit this file:
+   all your personal information lives in /config.js.
    ========================================================================== */
 
-const SITE = {
-  name: "The Sunday Ledger",          // ← newsletter name
-  author: "[First name]",             // ← author first name
-  initials: "SL",                     // ← shown in portrait / avatar
-  age: 17,
-  city: "Lyon",
-  email: "hello@yourdomain.com",      // ← contact email
-  // Paste your newsletter provider's form endpoint here (Buttondown, Beehiiv,
-  // Substack, Mailchimp, Formspree…). Leave empty to run in demo mode.
-  formAction: "",
+const C = window.SITE_CONFIG || {};
+const A = C.author || {};
+const DEFAULT_NAME = "The Sunday Ledger";
+
+const esc = (str) => String(str ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+const setText = (sel, val) => {
+  if (val === undefined || val === null) return;
+  document.querySelectorAll(sel).forEach((el) => (el.textContent = val));
 };
 
-/* ---------- Apply config to the page ---------- */
+/* ---------- Apply config.js to the page ---------- */
 function applyConfig() {
-  document.querySelectorAll("[data-site-name]").forEach((el) => (el.textContent = SITE.name));
-  document.querySelectorAll("[data-author]").forEach((el) => (el.textContent = SITE.author));
-  document.querySelectorAll("[data-initials]").forEach((el) => (el.textContent = SITE.initials));
-  document.querySelectorAll("[data-age]").forEach((el) => (el.textContent = SITE.age));
-  document.querySelectorAll("[data-city]").forEach((el) => (el.textContent = SITE.city));
-  document.querySelectorAll("[data-email]").forEach((el) => {
-    el.textContent = SITE.email;
-    if (el.tagName === "A") el.href = "mailto:" + SITE.email;
-  });
-  document.querySelectorAll("[data-year]").forEach((el) => (el.textContent = new Date().getFullYear()));
-  if (document.title.includes("The Sunday Ledger")) {
-    document.title = document.title.replace("The Sunday Ledger", SITE.name);
+  setText("[data-site-name]", C.newsletterName);
+  setText("[data-author]", A.firstName);
+  setText("[data-initials]", A.initials);
+  setText("[data-age]", A.age);
+  setText("[data-city]", A.city);
+  setText("[data-studying]", A.studying);
+  setText("[data-goal]", A.goal);
+  setText("[data-publishing]", C.publishingTime);
+  setText("[data-year]", new Date().getFullYear());
+  if (C.contactEmail) {
+    document.querySelectorAll("[data-email]").forEach((el) => {
+      el.textContent = C.contactEmail;
+      if (el.tagName === "A") el.href = "mailto:" + C.contactEmail;
+    });
   }
+  if (C.newsletterName && C.newsletterName !== DEFAULT_NAME) {
+    document.title = document.title.split(DEFAULT_NAME).join(C.newsletterName);
+  }
+  if (C.description) {
+    document.querySelectorAll('meta[name="description"][data-default], meta[property="og:description"][data-default]')
+      .forEach((m) => m.setAttribute("content", C.description));
+  }
+
+  // Portrait photo
+  if (A.photo) {
+    document.querySelectorAll(".portrait").forEach((el) => {
+      el.classList.add("has-photo");
+      el.innerHTML = `<img src="${esc(A.photo)}" alt="Portrait of ${esc(A.firstName)}">`;
+    });
+  }
+
+  // Experiences (About page)
+  const tl = document.querySelector("[data-experiences]");
+  if (tl && Array.isArray(C.experiences)) {
+    tl.innerHTML = C.experiences.map((x) => `
+      <li>
+        <span class="role">${esc(x.role)}${x.period ? ` <span class="period">· ${esc(x.period)}</span>` : ""}</span>
+        <span class="org">${esc(x.organisation)}</span>
+        <p>${esc(x.description)}</p>
+      </li>`).join("");
+  }
+
+  // Social links (footer)
+  const soc = C.social || {};
+  const labels = { linkedin: "LinkedIn", instagram: "Instagram", x: "X (Twitter)" };
+  document.querySelectorAll("[data-social]").forEach((ul) => {
+    const items = Object.keys(labels).filter((k) => soc[k]);
+    ul.innerHTML = items.map((k) => `<li><a href="${esc(soc[k])}" target="_blank" rel="noopener">${labels[k]}</a></li>`).join("");
+    const block = ul.closest("[data-social-block]");
+    if (block) block.hidden = items.length === 0;
+  });
 }
 
 /* ---------- Theme ---------- */
@@ -70,35 +106,43 @@ function initNav() {
 
 /* ---------- Subscribe forms ---------- */
 function initForms() {
+  const sub = C.subscribe || { mode: "demo" };
   document.querySelectorAll(".subscribe-form").forEach((form) => {
     const msg = form.parentElement.querySelector(".form-msg");
-    form.addEventListener("submit", async (e) => {
+    form.addEventListener("submit", (e) => {
       e.preventDefault();
       const input = form.querySelector('input[type="email"]');
       const email = input.value.trim();
-      const valid = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email);
-      if (!valid) {
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) {
         show(msg, "Please enter a valid email address.", "err");
         input.focus();
         return;
       }
-      const btn = form.querySelector("button");
-      btn.disabled = true;
-      try {
-        if (SITE.formAction) {
-          await fetch(SITE.formAction, {
-            method: "POST",
-            mode: "no-cors",
-            body: new URLSearchParams({ email }),
-          });
-        }
+      if (sub.mode === "form" && sub.url) {
+        // Real POST to the provider, opened in a new tab (works without CORS)
+        const f = document.createElement("form");
+        f.method = "POST";
+        f.action = sub.url;
+        f.target = "_blank";
+        const field = document.createElement("input");
+        field.type = "hidden";
+        field.name = sub.emailField || "email";
+        field.value = email;
+        f.appendChild(field);
+        document.body.appendChild(f);
+        f.submit();
+        f.remove();
+        show(msg, "Almost there: please confirm your subscription in the tab that just opened, then check your inbox.", "ok");
+      } else if (sub.mode === "redirect" && sub.url) {
+        const url = sub.url.includes("{email}")
+          ? sub.url.replace("{email}", encodeURIComponent(email))
+          : sub.url;
+        window.open(url, "_blank", "noopener");
+        show(msg, "Finish signing up in the tab that just opened.", "ok");
+      } else {
         show(msg, "You're in. Your first issue lands this Sunday morning.", "ok");
-        form.reset();
-      } catch (err) {
-        show(msg, "Something went wrong. Please try again in a moment.", "err");
-      } finally {
-        btn.disabled = false;
       }
+      form.reset();
     });
   });
   function show(el, text, cls) {

@@ -567,3 +567,9 @@ p { margin: 0 0 1.1em; }
   .subscribe-bar .subscribe-form { flex-direction: row; max-width: none; }
   .subscribe-bar .subscribe-form .btn { width: auto; padding-left: 14px; padding-right: 14px; }
 }
+
+/* Photo portrait & experience period (set in config.js) */
+.portrait.has-photo { background: var(--surface-alt); }
+.portrait.has-photo img { width: 100%; height: 100%; object-fit: cover; }
+.timeline .period { font-family: var(--font-sans); font-size: .85rem; font-weight: 500; color: var(--text-muted); }
+[data-social-block][hidden] { display: none; }

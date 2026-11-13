@@ -7,6 +7,8 @@
 <meta name="description" content="Econ 101: a plain-English guide to inflation, why it happens and how central banks fight it.">
 <meta property="og:title" content="What actually is inflation? — The Sunday Ledger">
 <meta property="og:description" content="Econ 101: a plain-English guide to inflation, why it happens and how central banks fight it.">
+<meta property="og:image" content="assets/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
 <meta property="og:type" content="website">
 <meta name="theme-color" content="#0b1a33">
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
@@ -23,6 +25,7 @@
     document.documentElement.setAttribute("data-theme", t);
   })();
 </script>
+<script src="config.js" defer></script>
 <script src="js/main.js" defer></script>
 </head>
 <body>
@@ -30,7 +33,7 @@
 
 <div class="topstrip">
   <div class="container">
-    <span>New issue every <strong>Sunday, 8:00 a.m.</strong> <span class="hide-sm">· Free · 6-minute read</span></span>
+    <span>New issue every <strong data-publishing>Sunday, 8:00 a.m.</strong> <span class="hide-sm">· Free · 6-minute read</span></span>
     <span class="hide-sm">Next issue: <span data-next-issue>this Sunday</span></span>
   </div>
 </div>
@@ -187,6 +190,10 @@
         <li><a href="about.html#principles">Editorial principles</a></li>
         <li><a data-email href="mailto:hello@yourdomain.com">hello@yourdomain.com</a></li>
       </ul>
+      <div data-social-block hidden>
+        <h4 style="margin-top:20px">Follow</h4>
+        <ul data-social></ul>
+      </div>
     </div>
   </div>
   <div class="footer-bottom">

@@ -4,9 +4,11 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>The Sunday Ledger — The world economy, explained every Sunday</title>
-<meta name="description" content="A free weekly newsletter that explains the world economy clearly and neutrally: wars, crises, jobs, politics and markets, in six minutes.">
+<meta name="description" content="A free weekly newsletter that explains the world economy clearly and neutrally: wars, crises, jobs, politics and markets, in six minutes." data-default>
 <meta property="og:title" content="The Sunday Ledger — The world economy, explained every Sunday">
-<meta property="og:description" content="A free weekly newsletter that explains the world economy clearly and neutrally: wars, crises, jobs, politics and markets, in six minutes.">
+<meta property="og:description" content="A free weekly newsletter that explains the world economy clearly and neutrally: wars, crises, jobs, politics and markets, in six minutes." data-default>
+<meta property="og:image" content="assets/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
 <meta property="og:type" content="website">
 <meta name="theme-color" content="#0b1a33">
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
@@ -23,6 +25,7 @@
     document.documentElement.setAttribute("data-theme", t);
   })();
 </script>
+<script src="config.js" defer></script>
 <script src="js/main.js" defer></script>
 </head>
 <body>
@@ -30,7 +33,7 @@
 
 <div class="topstrip">
   <div class="container">
-    <span>New issue every <strong>Sunday, 8:00 a.m.</strong> <span class="hide-sm">· Free · 6-minute read</span></span>
+    <span>New issue every <strong data-publishing>Sunday, 8:00 a.m.</strong> <span class="hide-sm">· Free · 6-minute read</span></span>
     <span class="hide-sm">Next issue: <span data-next-issue>this Sunday</span></span>
   </div>
 </div>
@@ -88,7 +91,7 @@
           <li><div><b>Chart of the Week</b><span>Inflation vs. interest rates, in one picture.</span></div></li>
           <li><div><b>One word to know</b><span>"Supply shock", explained in 60 seconds.</span></div></li>
         </ol>
-        <div class="ic-foot"><span>Read time: 6 min</span><span>Sunday, 8:00 a.m.</span></div>
+        <div class="ic-foot"><span>Read time: 6 min</span><span data-publishing>Sunday, 8:00 a.m.</span></div>
       </aside>
     </div>
   </section>
@@ -226,6 +229,10 @@
         <li><a href="about.html#principles">Editorial principles</a></li>
         <li><a data-email href="mailto:hello@yourdomain.com">hello@yourdomain.com</a></li>
       </ul>
+      <div data-social-block hidden>
+        <h4 style="margin-top:20px">Follow</h4>
+        <ul data-social></ul>
+      </div>
     </div>
   </div>
   <div class="footer-bottom">
