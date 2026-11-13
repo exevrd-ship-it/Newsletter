@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Chart of the Week — The Sunday Ledger</title>
+<meta name="description" content="One chart, explained. This week: euro-area inflation versus the ECB deposit rate, 2015–2024.">
+<meta property="og:title" content="Chart of the Week — The Sunday Ledger">
+<meta property="og:description" content="One chart, explained. This week: euro-area inflation versus the ECB deposit rate, 2015–2024.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#0b1a33">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<script>
+  // Set theme before paint to avoid a flash
+  (function () {
+    var t;
+    try { t = localStorage.getItem("theme"); } catch (e) {}
+    if (t !== "light" && t !== "dark") t = matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+    document.documentElement.setAttribute("data-theme", t);
+  })();
+</script>
+<script src="js/main.js" defer></script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<div class="topstrip">
+  <div class="container">
+    <span>New issue every <strong>Sunday, 8:00 a.m.</strong> <span class="hide-sm">· Free · 6-minute read</span></span>
+    <span class="hide-sm">Next issue: <span data-next-issue>this Sunday</span></span>
+  </div>
+</div>
+<header class="site-header">
+  <div class="container">
+    <a class="brand" href="index.html" aria-label="Home"><span class="brand-mark" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24"><path d="M3 18 L9 11 L13.5 14 L21 5" fill="none" stroke="#d8b465" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="brand-name" data-site-name>The Sunday Ledger</span></a>
+    <nav class="nav" aria-label="Main">
+      <ul class="nav-links" id="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="articles.html">Articles</a></li>
+        <li><a href="chart-of-the-week.html" aria-current="page">Chart of the Week</a></li>
+        <li><a href="about.html">About</a></li>
+      </ul>
+      <button class="icon-btn theme-toggle" type="button" aria-label="Toggle dark mode">
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+      </button>
+      <button class="icon-btn menu-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="nav-links">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+      <a class="btn btn-navy btn-header" href="#subscribe">Subscribe</a>
+    </nav>
+  </div>
+</header>
+
+<div class="subscribe-bar">
+  <div class="container">
+    <p><strong>The week in economics, explained.</strong> Every Sunday, free, in your inbox.</p>
+    <div class="form-wrap">
+        <form class="subscribe-form" action="#" method="post" novalidate>
+          <label class="sr-only" for="email-top">Email address</label>
+          <input id="email-top" type="email" name="email" placeholder="Your email address" autocomplete="email" required>
+          <button class="btn btn-gold" type="submit">Subscribe</button>
+        </form>
+        <p class="form-msg" role="status" aria-live="polite"></p>
+      </div>
+  </div>
+</div>
+
+<main id="main">
+  <section class="chart-hero">
+    <div class="container">
+      <p class="eyebrow">Chart of the Week · Issue #24</p>
+      <h1 style="max-width:860px">Ten years of euro-area money, in one picture.</h1>
+      <p class="lead" style="max-width:680px">From negative interest rates to the fastest tightening in the ECB's history: how inflation and the price of money moved together between 2015 and 2024.</p>
+    </div>
+  </section>
+
+  <section class="section-tight">
+    <div class="container chart-page-grid">
+      <figure class="chart-box" style="margin:0">
+        <div class="chart-top"></div>
+        <p class="chart-title">Euro area: inflation vs. ECB deposit rate</p>
+        <p class="chart-sub">Annual, %, 2015–2024 · Hover or tap the chart for values</p>
+        <div class="chart-legend"><span><i class="la"></i>Inflation (HICP, annual average)</span><span><i class="lb"></i>ECB deposit rate (end of year)</span></div>
+        <div class="chart-wrap" data-chart="inflation" data-label="Line chart of euro-area inflation and the ECB deposit rate from 2015 to 2024. Inflation stays below 2% until 2021, peaks at 8.4% in 2022, then falls to 2.4% in 2024. The deposit rate is negative until 2021, rises to 2% in 2022 and 4% in 2023, then is cut to 3% in 2024."></div>
+        <figcaption class="chart-source">Sources: Eurostat, HICP all-items, annual average rate of change (euro area); European Central Bank, deposit facility rate at year-end.</figcaption>
+      </figure>
+
+      <div>
+        <h2 style="font-size:1.6rem">What this chart tells us</h2>
+        <ol class="takeaways">
+          <li><b>A decade of "too little" inflation</b><span>From 2015 to 2020, inflation stayed well below the ECB's 2% target. To encourage lending and spending, the central bank pushed its deposit rate below zero.</span></li>
+          <li><b>2022: the shock</b><span>Reopening after Covid, supply bottlenecks and the energy crisis linked to the war in Ukraine sent inflation to 8.4%, the highest annual rate since the euro was created.</span></li>
+          <li><b>The response</b><span>The ECB raised its rate from -0.5% to 4% in just over a year. Higher rates make borrowing more expensive, which cools demand and, eventually, prices.</span></li>
+          <li><b>The lag</b><span>Notice the gap: rates rose <em>after</em> inflation had already jumped. Monetary policy works with a delay of many months, which is why central banks try to look ahead.</span></li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-tight">
+    <div class="container narrow prose">
+      <h2>Why it matters for you</h2>
+      <p>The deposit rate is the interest the ECB pays banks on money parked overnight. It sounds technical, but it sets the tone for nearly every other rate in the economy: the interest on a <em>Livret A</em>, the cost of a student loan, the mortgage rate on a first flat.</p>
+      <p>When the rate was negative, saving earned almost nothing and borrowing was cheap. When it climbed to 4%, savers were finally rewarded, but buying a home became much more expensive. Same economy, very different decisions.</p>
+      <div class="callout">
+        <h3>How to read it</h3>
+        <p>The navy line is the <strong>problem</strong> (prices rising). The gold line is the <strong>medicine</strong> (the price of money). When the navy line climbs far above 2%, expect the gold line to follow, with a delay.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt" aria-labelledby="past-title">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Previous charts</p>
+          <h2 id="past-title">From the archive</h2>
+        </div>
+        <a class="more" href="articles.html">All issues →</a>
+      </div>
+      <div class="past-charts">
+        <article class="past-chart">
+          <div class="meta"><span>Issue #23</span><span class="dot"></span><time datetime="2026-11-01">1 Nov 2026</time></div>
+          <h3>What a "yield curve" looks like when investors get nervous</h3>
+          <svg viewBox="0 0 200 70" preserveAspectRatio="none" aria-hidden="true"><path class="area" d="M0,20 C40,18 70,30 100,40 S160,52 200,50 L200,70 L0,70 Z"/><path d="M0,20 C40,18 70,30 100,40 S160,52 200,50"/></svg>
+        </article>
+        <article class="past-chart">
+          <div class="meta"><span>Issue #21</span><span class="dot"></span><time datetime="2026-10-18">18 Oct 2026</time></div>
+          <h3>Youth vs. overall unemployment: why the gap is always there</h3>
+          <svg viewBox="0 0 200 70" preserveAspectRatio="none" aria-hidden="true"><path class="area" d="M0,25 L30,22 L60,30 L90,18 L120,28 L150,35 L180,32 L200,38 L200,70 L0,70 Z"/><path d="M0,25 L30,22 L60,30 L90,18 L120,28 L150,35 L180,32 L200,38"/></svg>
+        </article>
+        <article class="past-chart">
+          <div class="meta"><span>Issue #17</span><span class="dot"></span><time datetime="2026-09-20">20 Sep 2026</time></div>
+          <h3>Average tariff rates over a century, in one line</h3>
+          <svg viewBox="0 0 200 70" preserveAspectRatio="none" aria-hidden="true"><path class="area" d="M0,15 C30,10 50,8 70,30 S120,58 160,60 S190,50 200,45 L200,70 L0,70 Z"/><path d="M0,15 C30,10 50,8 70,30 S120,58 160,60 S190,50 200,45"/></svg>
+        </article>
+      </div>
+    </div>
+  </section>
+</main>
+
+<section class="subscribe-cta on-dark" id="subscribe" aria-labelledby="sub-title">
+  <div class="container">
+    <div>
+      <p class="eyebrow">Free · Every Sunday</p>
+      <h2 id="sub-title">Understand the economy in six minutes a week.</h2>
+      <p>Join readers who start their Sunday with a clear, neutral briefing on what happened in the world economy, and why it matters for you.</p>
+    </div>
+    <div>
+      <div class="form-wrap">
+        <form class="subscribe-form" action="#" method="post" novalidate>
+          <label class="sr-only" for="email-bottom">Email address</label>
+          <input id="email-bottom" type="email" name="email" placeholder="Your email address" autocomplete="email" required>
+          <button class="btn btn-gold" type="submit">Subscribe</button>
+        </form>
+        <p class="form-msg" role="status" aria-live="polite"></p>
+      </div>
+      <p class="form-note">No spam, no ads. Unsubscribe in one click.</p>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-about">
+      <a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24"><path d="M3 18 L9 11 L13.5 14 L21 5" fill="none" stroke="#d8b465" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="brand-name" data-site-name>The Sunday Ledger</span></a>
+      <p>A weekly newsletter on the world economy, written in <span data-city>Lyon</span> by <span data-author>[First name]</span>. Clear, sourced, and free of political bias.</p>
+    </div>
+    <div>
+      <h4>Read</h4>
+      <ul>
+        <li><a href="articles.html">All issues</a></li>
+        <li><a href="articles.html#recap">Weekly Recap</a></li>
+        <li><a href="articles.html#econ">Econ 101</a></li>
+        <li><a href="articles.html#finance">Monthly Finance</a></li>
+        <li><a href="chart-of-the-week.html">Chart of the Week</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>About</h4>
+      <ul>
+        <li><a href="about.html">The author</a></li>
+        <li><a href="about.html#principles">Editorial principles</a></li>
+        <li><a data-email href="mailto:hello@yourdomain.com">hello@yourdomain.com</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="container">
+      <span>© <span data-year>2026</span> <span data-site-name>The Sunday Ledger</span>. All rights reserved.</span>
+      <span>For information only. Nothing here is financial advice.</span>
+    </div>
+  </div>
+</footer>
+</body>
+</html>
