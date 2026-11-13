@@ -23,16 +23,24 @@ window.SITE_CONFIG = {
 
   /* ---------- Toi ---------- */
   author: {
-    firstName: "[First name]",
-    initials: "SL",                 // 2 lettres, affichées dans le portrait
+    firstName: "Tom",
+    lastName: "Lyaudet",
+    initials: "TL",                 // 2 lettres, affichées dans le portrait
     age: 17,
     city: "Lyon",
-    studying: "Final year, lycée",  // ex. "Terminale, spécialité SES"
+    studying: "Terminale générale (final year)",
+    school: "Lycée Rosa Parks, Neuville-sur-Saône",   // "" pour ne pas l'afficher
     goal: "A top business school",
     // Photo (facultatif) : mets ton image dans le dossier assets/ puis écris
     // son nom ici, ex. "assets/portrait.jpg". Laisse "" pour les initiales.
     photo: "",
   },
+
+  // Page About, « Why I started this newsletter » : un paragraphe par ligne "…",
+  whyIStarted: [
+    "I've been passionate about economics and finance for a few years now. It started with simple questions: why do prices rise? Why do markets suddenly fall? Why does a war on the other side of the world change what we pay for petrol? The more I read, the more I wanted to understand how it all fits together.",
+    "I created this newsletter to turn that passion into something useful: making economics and finance accessible to everyone, especially young people who are curious about how the world works but find most economic news too technical, or too partisan.",
+  ],
 
   contactEmail: "hello@yourdomain.com",
 

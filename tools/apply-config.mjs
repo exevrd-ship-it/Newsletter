@@ -29,6 +29,12 @@ for (const file of pages) {
 
   if (C.newsletterName) h = h.split("The Sunday Ledger").join(esc(C.newsletterName));
   h = bake(h, "author", A.firstName);
+  h = bake(h, "fullname", [A.firstName, A.lastName].filter(Boolean).join(" "));
+  h = bake(h, "school", A.school);
+  if (Array.isArray(C.whyIStarted) && C.whyIStarted.length) {
+    h = h.replace(/(<div data-why>)[\s\S]*?(<\/div>)/,
+      (_, a, b) => a + C.whyIStarted.map((p) => `<p>${esc(p)}</p>`).join("") + b);
+  }
   h = bake(h, "initials", A.initials);
   h = bake(h, "age", A.age);
   h = bake(h, "city", A.city);

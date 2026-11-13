@@ -16,7 +16,8 @@ Ouvre **`config.js`**, à la racine du dépôt. C'est le **seul fichier** à mod
 | `description` | Phrase affichée par Google et quand on partage le lien |
 | `publishingTime` | « Sunday, 8:00 a.m. » ou autre |
 | `siteUrl` | Adresse finale du site (voir étape 2), **sans `/` à la fin** |
-| `author.firstName`, `initials`, `age`, `city`, `studying`, `goal` | Toi (page About, signature des articles, pied de page) |
+| `author.firstName`, `lastName`, `initials`, `age`, `city`, `studying`, `school`, `goal` | Toi (page About, signature des articles, pied de page) |
+| `whyIStarted` | Le texte « Why I started this newsletter » de la page About (un paragraphe par ligne) |
 | `author.photo` | Ta photo (facultatif) : dépose-la dans `assets/` (bouton *Add file → Upload files*), puis écris `"assets/nom-de-ta-photo.jpg"` |
 | `contactEmail` | Adresse de contact affichée sur le site |
 | `social` | Liens LinkedIn / Instagram / X (vide = masqué) |

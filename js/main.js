@@ -17,6 +17,12 @@ const setText = (sel, val) => {
 function applyConfig() {
   setText("[data-site-name]", C.newsletterName);
   setText("[data-author]", A.firstName);
+  setText("[data-fullname]", [A.firstName, A.lastName].filter(Boolean).join(" "));
+  setText("[data-school]", A.school);
+  document.querySelectorAll("[data-school]").forEach((el) => {
+    const row = el.closest("li");
+    if (row) row.hidden = !A.school;
+  });
   setText("[data-initials]", A.initials);
   setText("[data-age]", A.age);
   setText("[data-city]", A.city);
@@ -44,6 +50,12 @@ function applyConfig() {
       el.classList.add("has-photo");
       el.innerHTML = `<img src="${esc(A.photo)}" alt="Portrait of ${esc(A.firstName)}">`;
     });
+  }
+
+  // "Why I started" paragraphs (About page)
+  const why = document.querySelector("[data-why]");
+  if (why && Array.isArray(C.whyIStarted) && C.whyIStarted.length) {
+    why.innerHTML = C.whyIStarted.map((p) => `<p>${esc(p)}</p>`).join("");
   }
 
   // Experiences (About page)
