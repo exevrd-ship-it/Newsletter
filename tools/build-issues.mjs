@@ -131,6 +131,8 @@ const scheduled = all.filter((it) => it.date > todayParis);
 
 const fmt = (iso, opts) => new Date(iso + "T12:00:00Z").toLocaleDateString("en-GB", { timeZone: "UTC", ...opts });
 const short = (iso) => fmt(iso, { day: "numeric", month: "short", year: "numeric" });
+const monthId = (iso) => iso.slice(0, 7);                                   // 2026-11
+const monthLabel = (iso) => fmt(iso, { month: "long", year: "numeric" });   // November 2026
 
 /* ---------- Write issue pages ---------- */
 for (const old of fs.readdirSync(root).filter((f) => /^issue-.*\.html$/.test(f))) fs.unlinkSync(path.join(root, old));
@@ -146,6 +148,8 @@ published.forEach((it, idx) => {
     .split("{{DATE_ISO}}").join(it.date)
     .split("{{DATE_LONG}}").join(fmt(it.date, { weekday: "long", day: "numeric", month: "long", year: "numeric" }))
     .split("{{READ}}").join(String(it.read))
+    .split("{{MONTH_ID}}").join(monthId(it.date))
+    .split("{{MONTH_LABEL}}").join(monthLabel(it.date))
     .split("{{PREV}}").join(prev ? `<a href="${prev.slug}.html">← ${esc(prev.title)}</a>` : `<a href="articles.html">← All issues</a>`)
     .split("{{NEXT}}").join(next ? `<a href="${next.slug}.html">${esc(next.title)} →</a>` : `<a href="chart-of-the-week.html">Chart of the Week →</a>`)
     .split("{{BODY}}").join(markdown(it.body));
@@ -156,15 +160,44 @@ published.forEach((it, idx) => {
 const newest = [...published].reverse();
 const tagClass = { recap: "tag-recap", econ: "tag-econ", finance: "tag-finance" };
 
-const rows = newest.map((it) => `        <li class="issue-row" data-category="${it.cat.slug}">
-          <div class="no">Issue <b>#${it.number}</b></div>
-          <div>
-            <span class="tag ${tagClass[it.cat.slug]}">${it.cat.label}</span>
-            <h2><a href="${it.slug}.html">${esc(it.title)}</a></h2>
-            <p>${esc(it.summary)}</p>
-          </div>
-          <div class="side"><time datetime="${it.date}">${short(it.date)}</time><span>${it.read} min read</span></div>
-        </li>`).join("\n");
+const row = (it) => `          <li class="issue-row" data-category="${it.cat.slug}">
+            <div class="no">Issue <b>#${it.number}</b></div>
+            <div>
+              <span class="tag ${tagClass[it.cat.slug]}">${it.cat.label}</span>
+              <h3><a href="${it.slug}.html">${esc(it.title)}</a></h3>
+              <p>${esc(it.summary)}</p>
+            </div>
+            <div class="side"><time datetime="${it.date}">${short(it.date)}</time><span>${it.read} min read</span></div>
+          </li>`;
+
+// Group by year, then by month (newest first)
+const years = [];
+for (const it of newest) {
+  const y = it.date.slice(0, 4), m = monthId(it.date);
+  let year = years.find((g) => g.y === y);
+  if (!year) years.push((year = { y, months: [] }));
+  let month = year.months.find((g) => g.id === m);
+  if (!month) year.months.push((month = { id: m, label: monthLabel(it.date), short: fmt(it.date, { month: "long" }), items: [] }));
+  month.items.push(it);
+}
+const plural = (n) => `${n} issue${n === 1 ? "" : "s"}`;
+
+const rows = years.map((year) => `        <div class="archive-year" data-archive-year="${year.y}">
+          <h2 class="archive-year-title">${year.y}</h2>
+${year.months.map((m) => `          <section class="archive-month" id="${m.id}" aria-labelledby="t-${m.id}">
+            <h3 class="archive-month-title" id="t-${m.id}">${m.label}<span data-month-count>${plural(m.items.length)}</span></h3>
+            <ol class="issue-list">
+${m.items.map(row).join("\n")}
+            </ol>
+          </section>`).join("\n")}
+        </div>`).join("\n");
+
+const nav = years.map((year) => `        <div class="archive-nav-year">
+          <span class="archive-nav-y">${year.y}</span>
+          <ul>
+${year.months.map((m) => `            <li><a href="#${m.id}" data-month-link="${m.id}">${m.short}<span>${m.items.length}</span></a></li>`).join("\n")}
+          </ul>
+        </div>`).join("\n");
 
 const cards = newest.slice(0, 3).map((it) => `        <a class="card reveal" href="${it.slug}.html">
           <span class="tag ${tagClass[it.cat.slug]}">${it.cat.label}</span>
@@ -189,6 +222,7 @@ function between(file, name, content) {
   fs.writeFileSync(p, out);
 }
 between("articles.html", "ISSUES", rows);
+between("articles.html", "ARCHIVE-NAV", nav);
 between("index.html", "LATEST", cards);
 
 console.log(`Published ${published.length} issue(s)` + (scheduled.length ? `, ${scheduled.length} scheduled: ${scheduled.map((s) => s.date + " " + s.title).join(" | ")}` : "") + ".");

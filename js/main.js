@@ -164,25 +164,64 @@ function initForms() {
   }
 }
 
-/* ---------- Article filters ---------- */
+/* ---------- Archive: category filters, search, month index ---------- */
 function initFilters() {
   const btns = document.querySelectorAll(".filter-btn");
   if (!btns.length) return;
-  const rows = document.querySelectorAll(".issue-row");
+  const rows = [...document.querySelectorAll(".issue-row")];
+  const months = [...document.querySelectorAll(".archive-month")];
+  const years = [...document.querySelectorAll(".archive-year")];
   const count = document.querySelector("[data-count]");
-  const apply = (cat) => {
+  const empty = document.querySelector(".archive-empty");
+  const search = document.getElementById("archive-q");
+  const norm = (t) => t.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "");
+  rows.forEach((r) => (r.dataset.text = norm(r.textContent)));
+  let cat = "all";
+
+  const apply = () => {
+    const words = norm(search ? search.value : "").split(/\s+/).filter(Boolean);
     let n = 0;
     rows.forEach((r) => {
-      const show = cat === "all" || r.dataset.category === cat;
+      const show = (cat === "all" || r.dataset.category === cat) && words.every((w) => r.dataset.text.includes(w));
       r.hidden = !show;
       if (show) n++;
     });
+    months.forEach((m) => {
+      const k = m.querySelectorAll(".issue-row:not([hidden])").length;
+      m.hidden = k === 0;
+      const c = m.querySelector("[data-month-count]");
+      if (c) c.textContent = k + (k === 1 ? " issue" : " issues");
+      const link = document.querySelector(`[data-month-link="${m.id}"]`);
+      if (link) {
+        link.closest("li").hidden = k === 0;
+        const badge = link.querySelector("span");
+        if (badge) badge.textContent = k;
+      }
+    });
+    years.forEach((y) => (y.hidden = !y.querySelector(".archive-month:not([hidden])")));
+    document.querySelectorAll(".archive-nav-year").forEach((y) => (y.hidden = !y.querySelector("li:not([hidden])")));
     btns.forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.filter === cat)));
     if (count) count.textContent = n + (n === 1 ? " issue" : " issues");
+    if (empty) empty.hidden = n !== 0;
   };
-  btns.forEach((b) => b.addEventListener("click", () => apply(b.dataset.filter)));
+
+  btns.forEach((b) => b.addEventListener("click", () => { cat = b.dataset.filter; apply(); }));
+  if (search) search.addEventListener("input", apply);
   const fromHash = location.hash.replace("#", "");
-  apply(["recap", "econ", "finance"].includes(fromHash) ? fromHash : "all");
+  if (["recap", "econ", "finance"].includes(fromHash)) cat = fromHash;
+  apply();
+
+  // Highlight the month currently on screen in the "Browse by month" index
+  if ("IntersectionObserver" in window && months.length) {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((en) => {
+        if (!en.isIntersecting) return;
+        document.querySelectorAll("[data-month-link]").forEach((a) =>
+          a.classList.toggle("active", a.dataset.monthLink === en.target.id));
+      });
+    }, { rootMargin: "-30% 0px -60% 0px" });
+    months.forEach((m) => io.observe(m));
+  }
 }
 
 /* ---------- Chart of the Week ---------- */

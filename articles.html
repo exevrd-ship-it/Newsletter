@@ -78,7 +78,12 @@
     <div class="container">
       <p class="eyebrow">The archive</p>
       <h1>Every issue, every Sunday.</h1>
-      <p class="lead">Browse past issues by section. Each one is written to be read in a single sitting, and to still make sense months later.</p>
+      <p class="lead">Every past issue, sorted by month. Each one is written to be read in a single sitting, and to still make sense months later.</p>
+      <div class="archive-search">
+        <label class="sr-only" for="archive-q">Search the archive</label>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+        <input id="archive-q" type="search" placeholder="Search issues: inflation, oil, ECB…" autocomplete="off">
+      </div>
       <div class="filters" role="group" aria-label="Filter by category">
         <button class="filter-btn" type="button" data-filter="all" aria-pressed="true">All</button>
         <button class="filter-btn" type="button" data-filter="recap" aria-pressed="false">Weekly Recap</button>
@@ -89,21 +94,41 @@
     </div>
   </section>
 
-  <section class="section-tight" style="padding-top:0">
-    <div class="container">
-      <ol class="issue-list">
+  <section class="section-tight">
+    <div class="container archive-layout">
+      <nav class="archive-nav" aria-label="Browse by month">
+        <p class="eyebrow">Browse by month</p>
+<!-- ARCHIVE-NAV:START -->
+        <div class="archive-nav-year">
+          <span class="archive-nav-y">2026</span>
+          <ul>
+            <li><a href="#2026-10" data-month-link="2026-10">October<span>1</span></a></li>
+          </ul>
+        </div>
+<!-- ARCHIVE-NAV:END -->
+      </nav>
+      <div class="archive-list">
 <!-- ISSUES:START -->
-        <li class="issue-row" data-category="econ">
-          <div class="no">Issue <b>#1</b></div>
-          <div>
-            <span class="tag tag-econ">Econ 101</span>
-            <h2><a href="issue-2026-10-25-what-is-inflation.html">What actually is inflation? A guide for the textbook-shy</a></h2>
-            <p>Why prices rise, why 2% is the magic number, and how central banks try to keep inflation in check, with one baguette as our guide.</p>
-          </div>
-          <div class="side"><time datetime="2026-10-25">25 Oct 2026</time><span>3 min read</span></div>
-        </li>
+        <div class="archive-year" data-year="2026">
+          <h2 class="archive-year-title">2026</h2>
+          <section class="archive-month" id="2026-10" aria-labelledby="t-2026-10">
+            <h3 class="archive-month-title" id="t-2026-10">October 2026<span data-month-count>1 issue</span></h3>
+            <ol class="issue-list">
+          <li class="issue-row" data-category="econ">
+            <div class="no">Issue <b>#1</b></div>
+            <div>
+              <span class="tag tag-econ">Econ 101</span>
+              <h3><a href="issue-2026-10-25-what-is-inflation.html">What actually is inflation? A guide for the textbook-shy</a></h3>
+              <p>Why prices rise, why 2% is the magic number, and how central banks try to keep inflation in check, with one baguette as our guide.</p>
+            </div>
+            <div class="side"><time datetime="2026-10-25">25 Oct 2026</time><span>3 min read</span></div>
+          </li>
+            </ol>
+          </section>
+        </div>
 <!-- ISSUES:END -->
-      </ol>
+        <p class="archive-empty" hidden>No issue matches your search.</p>
+      </div>
     </div>
   </section>
 </main>

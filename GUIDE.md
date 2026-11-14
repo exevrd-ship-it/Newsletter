@@ -113,6 +113,8 @@ Tu peux donc l'écrire le samedi soir.
 | `:::box The short version` … `:::` | Encadré doré (tout ce qui est entre les deux lignes `:::`) |
 
 Le numéro (#1, #2…) et le temps de lecture sont calculés automatiquement.
+La page **Articles** range automatiquement tous tes numéros par **année puis par mois**, avec un sommaire
+« Browse by month », une recherche et des filtres par rubrique. Rien à faire de ton côté.
 Pour **corriger** un article : modifie son fichier `.md`. Pour le **retirer** : supprime-le.
 Les fichiers qui commencent par `_` ne sont jamais publiés (pratique pour un brouillon : `_brouillon.md`).
 
