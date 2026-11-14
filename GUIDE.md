@@ -74,13 +74,53 @@ Teste ensuite en t'inscrivant toi-même avec ton adresse.
 
 ---
 
-## Étape 4 : publier un nouveau numéro chaque semaine
+## Étape 4 : publier ton numéro chaque dimanche
 
-1. **Créer l'article** : ouvre `article-what-is-inflation.html` → icône **⋯** → copie tout le contenu → *Add file → Create new file*, nomme-le par exemple `issue-25-oil-prices.html`, colle, puis remplace le titre, la date, la catégorie et le texte (entre les balises `<p>…</p>`).
-2. **L'ajouter aux archives** : dans `articles.html`, copie un bloc `<li class="issue-row" …> … </li>` et colle-le **tout en haut** de la liste. Change le numéro, le titre, le lien (`href="issue-25-oil-prices.html"`), la date et la catégorie (`data-category="recap"`, `"econ"` ou `"finance"`).
-3. **La page d'accueil** : dans `index.html`, mets à jour les 3 cartes « Latest issues ».
+Tu écris ton texte dans un **simple fichier texte** (format Markdown), sans aucun code.
+Le site crée tout seul la page de l'article, l'ajoute aux archives et met à jour l'accueil.
 
-> Les numéros #17 à #24 sont des **exemples** : remplace-les ou supprime-les avant de faire connaître le site.
+1. Ouvre le dossier **`issues/`** sur GitHub, puis le fichier **`_MODELE.md`** → copie tout son contenu.
+2. Dans `issues/`, clique sur **Add file → Create new file**.
+   Nomme le fichier avec la date et quelques mots : `2026-11-15-oil-prices.md`.
+3. Colle le modèle, puis remplis le haut du fichier :
+   ```
+   ---
+   title: Why oil prices jumped this week
+   date: 2026-11-15
+   category: Weekly Recap
+   summary: Une ou deux phrases de résumé.
+   ---
+   ```
+   `category` vaut **Weekly Recap**, **Econ 101** ou **Monthly Finance**.
+4. En dessous, écris ou colle ton texte (laisse une ligne vide entre les paragraphes).
+5. Clique sur **Commit changes**. Le numéro est en ligne 1 à 2 minutes plus tard.
+
+**Programmer à l'avance** : si tu mets une date future (le dimanche suivant), l'article reste
+caché et se publie tout seul ce dimanche-là vers 8 h (9 h en heure d'été).
+Tu peux donc l'écrire le samedi soir.
+
+**Mise en forme dans le texte**
+
+| Tu écris | Résultat |
+|---|---|
+| `## Mon intertitre` | Un intertitre |
+| `**important**` | **gras** |
+| `*mot*` | *italique* |
+| `- élément` | Liste à puces |
+| `> Une phrase forte` | Citation mise en avant |
+| `[texte](https://lien.com)` | Lien |
+| `![légende](assets/mon-image.png)` | Image (dépose-la d'abord dans `assets/`) |
+| `:::box The short version` … `:::` | Encadré doré (tout ce qui est entre les deux lignes `:::`) |
+
+Le numéro (#1, #2…) et le temps de lecture sont calculés automatiquement.
+Pour **corriger** un article : modifie son fichier `.md`. Pour le **retirer** : supprime-le.
+Les fichiers qui commencent par `_` ne sont jamais publiés (pratique pour un brouillon : `_brouillon.md`).
+
+> L'article sur l'inflation (`issues/2026-10-25-what-is-inflation.md`) est un exemple :
+> garde-le, modifie-le ou supprime-le.
+
+**Envoyer le numéro par email** : le site ne l'envoie pas tout seul. Colle le même texte dans ton outil
+de newsletter (Substack, Buttondown…) et programme l'envoi pour dimanche 8 h.
 
 ### Changer le Chart of the Week
 - **Les données** : dans `js/main.js`, cherche `CHARTS`. Tu y trouves les années (`x`), les valeurs de chaque courbe (`values`), leur nom (`label`) et les bornes de l'axe (`yMin`, `yMax`).
@@ -90,8 +130,9 @@ Teste ensuite en t'inscrivant toi-même avec ton adresse.
 
 ## Ce que contient le dépôt
 - `config.js` : **tes informations** (étape 1)
-- `index.html`, `articles.html`, `chart-of-the-week.html`, `about.html`, `article-*.html`, `404.html` : les pages
+- `issues/` : **tes numéros** (un fichier `.md` par dimanche)
+- `index.html`, `articles.html`, `chart-of-the-week.html`, `about.html`, `404.html` : les pages (les pages `issue-*.html` sont créées automatiquement)
 - `css/style.css` : couleurs et mise en page (couleurs en haut du fichier, dans `:root`)
 - `js/main.js` : fonctionnement (mode sombre, menu, formulaires, graphique)
 - `assets/` : logo, image de partage, ta photo
-- `.github/workflows/deploy.yml` et `tools/` : mise en ligne automatique (ne pas toucher)
+- `.github/workflows/deploy.yml`, `tools/` et `templates/` : mise en ligne automatique (ne pas toucher)

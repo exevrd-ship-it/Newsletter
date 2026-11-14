@@ -5,6 +5,10 @@ name: Publish website
 on:
   push:
   workflow_dispatch:
+  # Every Sunday at 07:00 UTC (8:00 in Paris in winter, 9:00 in summer):
+  # publishes issues that were written in advance with a future date.
+  schedule:
+    - cron: "0 7 * * 0"
 
 permissions:
   contents: read
@@ -27,6 +31,8 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 20
+      - name: Build issues from issues/*.md
+        run: node tools/build-issues.mjs
       - name: Apply config.js to the pages
         run: node tools/apply-config.mjs
       - name: Prepare files
