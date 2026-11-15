@@ -12,15 +12,15 @@ Ouvre **`config.js`**, à la racine du dépôt. C'est le **seul fichier** à mod
 
 | Champ | À quoi ça sert |
 |---|---|
-| `newsletterName` | Nom de la newsletter, partout sur le site, dans l'onglet du navigateur et sur Google |
-| `description` | Phrase affichée par Google et quand on partage le lien |
-| `publishingTime` | « Sunday, 8:00 a.m. » ou autre |
+| `Econ Explained` | Nom de la newsletter, partout sur le site, dans l'onglet du navigateur et sur Google |
+| `“Econ Explained” is a website designed to help you learn the fundamentals of economics and finance.` | Phrase affichée par Google et quand on partage le lien |
+| `Every sunday at 10 a.m.` | « Sunday, 8:00 a.m. » ou autre |
 | `siteUrl` | Adresse finale du site (voir étape 2), **sans `/` à la fin** |
-| `author.firstName`, `lastName`, `initials`, `age`, `city`, `studying`, `school`, `goal` | Toi (page About, signature des articles, pied de page) |
+| `Tom`, `Lyaudet`, `TL`, `17`, `Lyon`, `12th Grade`, `Rosa Parks`, `Develop an understanding of the economic and financial world ` | Toi (page About, signature des articles, pied de page) |
 | `whyIStarted` | Le texte « Why I started this newsletter » de la page About (un paragraphe par ligne) |
 | `author.photo` | Ta photo (facultatif) : dépose-la dans `assets/` (bouton *Add file → Upload files*), puis écris `"assets/nom-de-ta-photo.jpg"` |
-| `contactEmail` | Adresse de contact affichée sur le site |
-| `social` | Liens LinkedIn / Instagram / X (vide = masqué) |
+| `econ.explained23@gmail.com` | Adresse de contact affichée sur le site |
+| `social` | Liens LinkedIn : Tom Lyaudet / Instagram : econ_explained23 / X : Econ.explained_ |
 | `experiences` | Tes stages et jobs (page About). Ajoute ou supprime des blocs `{ … },` |
 | `subscribe` | Branchement du formulaire d'inscription (étape 3) |
 
