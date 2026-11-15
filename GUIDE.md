@@ -17,7 +17,7 @@ Ouvre **`config.js`**, à la racine du dépôt. C'est le **seul fichier** à mod
 | `Every sunday at 10 a.m.` | « Sunday, 8:00 a.m. » ou autre |
 | `siteUrl` | Adresse finale du site (voir étape 2), **sans `/` à la fin** |
 | `Tom`, `Lyaudet`, `TL`, `17`, `Lyon`, `12th Grade`, `Rosa Parks`, `Develop an understanding of the economic and financial world ` | Toi (page About, signature des articles, pied de page) |
-| `whyIStarted` | Le texte « Why I started this newsletter » de la page About (un paragraphe par ligne) |
+| `Why did we creat this newsletter ? We believe that today, to truly understand the world we live in, we must first understand the basics of economics and finance. More generally, the economy is at the heart of media coverage, particularly in France and even in the U.S. Our weekly newsletter will provide a summary of the global economic landscape to keep you informed in the best and fastest way possible. ` | Le texte « Why I started this newsletter » de la page About (un paragraphe par ligne) |
 | `author.photo` | Ta photo (facultatif) : dépose-la dans `assets/` (bouton *Add file → Upload files*), puis écris `"assets/nom-de-ta-photo.jpg"` |
 | `econ.explained23@gmail.com` | Adresse de contact affichée sur le site |
 | `Liens LinkedIn : Tom Lyaudet / Instagram : econ_explained23 / X : Econ.explained_` | Liens LinkedIn / Instagram  / X |
