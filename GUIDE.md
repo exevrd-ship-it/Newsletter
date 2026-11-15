@@ -20,7 +20,7 @@ Ouvre **`config.js`**, à la racine du dépôt. C'est le **seul fichier** à mod
 | `whyIStarted` | Le texte « Why I started this newsletter » de la page About (un paragraphe par ligne) |
 | `author.photo` | Ta photo (facultatif) : dépose-la dans `assets/` (bouton *Add file → Upload files*), puis écris `"assets/nom-de-ta-photo.jpg"` |
 | `econ.explained23@gmail.com` | Adresse de contact affichée sur le site |
-| `social` | Liens LinkedIn : Tom Lyaudet / Instagram : econ_explained23 / X : Econ.explained_ |
+| `Liens LinkedIn : Tom Lyaudet / Instagram : econ_explained23 / X : Econ.explained_` | Liens LinkedIn / Instagram  / X |
 | `experiences` | Tes stages et jobs (page About). Ajoute ou supprime des blocs `{ … },` |
 | `subscribe` | Branchement du formulaire d'inscription (étape 3) |
 
