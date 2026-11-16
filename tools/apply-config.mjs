@@ -31,6 +31,17 @@ for (const file of pages) {
   h = bake(h, "author", A.firstName);
   h = bake(h, "fullname", [A.firstName, A.lastName].filter(Boolean).join(" "));
   h = bake(h, "school", A.school);
+  h = bake(h, "why-title", C.whyTitle);
+  h = bake(h, "exp-intro", C.experiencesIntro);
+  h = bake(h, "exp-conclusion", C.experiencesConclusion);
+  if (Array.isArray(C.experiences)) {
+    h = h.replace(/(<ol class="timeline" data-experiences>)[\s\S]*?(<\/ol>)/, (_, a, b) => a + C.experiences.map((x) => `
+          <li>
+            <span class="role">${esc(x.role)}${x.period ? ` <span class="period">· ${esc(x.period)}</span>` : ""}</span>
+            <span class="org">${esc(x.organisation)}</span>
+            <p>${esc(x.description)}</p>
+          </li>`).join("") + "\n        " + b);
+  }
   if (Array.isArray(C.whyIStarted) && C.whyIStarted.length) {
     h = h.replace(/(<div data-why>)[\s\S]*?(<\/div>)/,
       (_, a, b) => a + C.whyIStarted.map((p) => `<p>${esc(p)}</p>`).join("") + b);

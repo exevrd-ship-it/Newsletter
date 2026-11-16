@@ -29,6 +29,10 @@ function applyConfig() {
   setText("[data-studying]", A.studying);
   setText("[data-goal]", A.goal);
   setText("[data-publishing]", C.publishingTime);
+  setText("[data-why-title]", C.whyTitle);
+  setText("[data-exp-intro]", C.experiencesIntro);
+  setText("[data-exp-conclusion]", C.experiencesConclusion);
+  document.querySelectorAll("[data-exp-intro], [data-exp-conclusion]").forEach((el) => (el.hidden = !el.textContent.trim()));
   setText("[data-year]", new Date().getFullYear());
   if (C.contactEmail) {
     document.querySelectorAll("[data-email]").forEach((el) => {

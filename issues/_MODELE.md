@@ -14,7 +14,7 @@ summary: Une ou deux phrases qui résument le numéro. Elles s'affichent sur l'a
        title    : le titre
        date     : la date du dimanche, au format AAAA-MM-JJ
                   (si la date est dans le futur, l'article reste caché
-                   et se publie tout seul ce dimanche-là vers 8 h)
+                   et se publie tout seul ce dimanche-là vers 10 h)
        category : Weekly Recap, Econ 101 ou Monthly Finance
        summary  : le résumé
   3. En dessous, écris ou colle ton texte. Mise en forme possible :

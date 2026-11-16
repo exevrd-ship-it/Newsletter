@@ -11,14 +11,15 @@
 window.SITE_CONFIG = {
 
   /* ---------- La newsletter ---------- */
-  newsletterName: "The Sunday Ledger",
+  newsletterName: "Econ Explained",
   // Phrase utilisée par Google et lors du partage du lien (≈ 150 caractères max)
-  description: "A free weekly newsletter that explains the world economy clearly and neutrally: wars, crises, jobs, politics and markets, in six minutes.",
-  publishingTime: "Sunday, 8:00 a.m.",
+  description: "Econ Explained is a weekly newsletter designed to help you learn the fundamentals of economics and finance.",
+  // S'affiche après « New issue every … » : écris juste le jour et l'heure
+  publishingTime: "Sunday, 10:00 a.m.",
 
   // Adresse finale du site, SANS « / » à la fin.
   // Ex. GitHub Pages : "https://ton-pseudo.github.io/Newsletter"
-  // Ex. nom de domaine : "https://www.thesundayledger.com"
+  // Ex. nom de domaine : "https://www.econexplained.com"
   siteUrl: "https://exevrd-ship-it.github.io/Newsletter",
 
   /* ---------- Toi ---------- */
@@ -28,51 +29,49 @@ window.SITE_CONFIG = {
     initials: "TL",                 // 2 lettres, affichées dans le portrait
     age: 17,
     city: "Lyon",
-    studying: "Terminale générale (final year)",
-    school: "Lycée Rosa Parks, Neuville-sur-Saône",   // "" pour ne pas l'afficher
-    goal: "A top business school",
+    studying: "12th Grade",
+    school: "Lycée Rosa Parks",     // "" pour ne pas l'afficher
+    goal: "Develop an understanding of the economic and financial world",
     // Photo (facultatif) : mets ton image dans le dossier assets/ puis écris
     // son nom ici, ex. "assets/portrait.jpg". Laisse "" pour les initiales.
     photo: "",
   },
 
-  // Page About, « Why I started this newsletter » : un paragraphe par ligne "…",
+  // Page About : titre et texte de la partie « pourquoi cette newsletter »
+  // (un paragraphe par ligne "…",)
+  whyTitle: "Why we created this newsletter",
   whyIStarted: [
-    "I've been passionate about economics and finance for a few years now. It started with simple questions: why do prices rise? Why do markets suddenly fall? Why does a war on the other side of the world change what we pay for petrol? The more I read, the more I wanted to understand how it all fits together.",
-    "I created this newsletter to turn that passion into something useful: making economics and finance accessible to everyone, especially young people who are curious about how the world works but find most economic news too technical, or too partisan.",
+    "We believe that today, to truly understand the world we live in, we must first understand the basics of economics and finance. More generally, the economy is at the heart of media coverage, particularly in France and even in the U.S.",
+    "Our weekly newsletter will provide a summary of the global economic landscape to keep you informed in the best and fastest way possible.",
   ],
 
-  contactEmail: "hello@yourdomain.com",
+  contactEmail: "econ.explained23@gmail.com",
 
-  // Réseaux sociaux : colle le lien complet, ou laisse "" pour masquer
+  // Réseaux sociaux : colle le lien COMPLET (https://…), ou laisse "" pour masquer
   social: {
-    linkedin: "",
-    instagram: "",
-    x: "",
+    linkedin: "",   // ex. "https://www.linkedin.com/in/ton-profil/"
+    instagram: "https://www.instagram.com/econ_explained23/",
+    x: "",          // ex. "https://x.com/ton_pseudo"
   },
 
   /* ---------- Tes expériences (page About) ----------
      Ajoute, supprime ou modifie des blocs { … }, séparés par des virgules. */
+  experiencesIntro: "In June 2024, I did two internships in Lyon, which gave me a good insight into the professional world.",
   experiences: [
     {
-      role: "Intern",
-      organisation: "Independent wealth management firm · Lyon",
-      period: "",                   // ex. "Summer 2025"
-      description: "Observed how advisers build savings and investment strategies for families: risk profiles, diversification, life insurance and retirement planning. My first real lesson in how interest rates and markets affect ordinary households.",
+      role: "Intern, real estate",
+      organisation: "Aldéa Immobilier · Independent estate agency, Lyon",
+      period: "June 10–16, 2024",
+      description: "I learned how property sales and rentals are handled, and I saw how important it is to build trust with clients.",
     },
     {
-      role: "Intern",
-      organisation: "Caisse d'Épargne · Retail banking",
-      period: "",
-      description: "Shadowed advisers in a branch: savings accounts, consumer and mortgage loans, client meetings. A front-row view of how ECB decisions end up in the rates people are actually offered.",
-    },
-    {
-      role: "Student job",
-      organisation: "Part-time, alongside school",
-      period: "",
-      description: "Working with customers taught me reliability, time management, and what a price increase looks like from the other side of the counter.",
+      role: "Intern, banking",
+      organisation: "Caisse d'Epargne Rhône Alpes · Headquarters, Tour Incity, Lyon",
+      period: "June 17–23, 2024",
+      description: "I got a better understanding of how a bank works, especially its financial, marketing and sales sides.",
     },
   ],
+  experiencesConclusion: "Both internships increased my interest in finance and real estate. They also taught me to be punctual, adaptable and a good team player.",
 
   /* ---------- Inscriptions ----------
      mode "demo"     : le formulaire affiche juste un message (aucun email enregistré).

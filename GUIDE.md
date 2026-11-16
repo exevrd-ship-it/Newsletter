@@ -12,24 +12,16 @@ Ouvre **`config.js`**, à la racine du dépôt. C'est le **seul fichier** à mod
 
 | Champ | À quoi ça sert |
 |---|---|
-| `Econ Explained` | Nom de la newsletter, partout sur le site, dans l'onglet du navigateur et sur Google |
-| `“Econ Explained” is a website designed to help you learn the fundamentals of economics and finance.` | Phrase affichée par Google et quand on partage le lien |
-| `Every sunday at 10 a.m.` | « Sunday, 8:00 a.m. » ou autre |
+| `newsletterName` | Nom de la newsletter, partout sur le site, dans l'onglet du navigateur et sur Google |
+| `description` | Phrase affichée par Google et quand on partage le lien |
+| `publishingTime` | Jour et heure de parution, ex. « Sunday, 10:00 a.m. » |
 | `siteUrl` | Adresse finale du site (voir étape 2), **sans `/` à la fin** |
-| `Tom`, `Lyaudet`, `TL`, `17`, `Lyon`, `12th Grade`, `Rosa Parks`, `Develop an understanding of the economic and financial world ` | Toi (page About, signature des articles, pied de page) |
-| `Why did we creat this newsletter ? We believe that today, to truly understand the world we live in, we must first understand the basics of economics and finance. More generally, the economy is at the heart of media coverage, particularly in France and even in the U.S. Our weekly newsletter will provide a summary of the global economic landscape to keep you informed in the best and fastest way possible. ` | Le texte « Why I started this newsletter » de la page About (un paragraphe par ligne) |
+| `author.firstName`, `lastName`, `initials`, `age`, `city`, `studying`, `school`, `goal` | Toi (page About, signature des articles, pied de page) |
+| `whyTitle`, `whyIStarted` | Titre et texte « Why we created this newsletter » de la page About (un paragraphe par ligne) |
 | `author.photo` | Ta photo (facultatif) : dépose-la dans `assets/` (bouton *Add file → Upload files*), puis écris `"assets/nom-de-ta-photo.jpg"` |
-| `econ.explained23@gmail.com` | Adresse de contact affichée sur le site |
-| `Liens LinkedIn : Tom Lyaudet / Instagram : econ_explained23 / X : Econ.explained_` | Liens LinkedIn / Instagram  / X |
-|In June 2024, I did two internships in Lyon, which gave me a good insight into the professional world.
-
-From June 10 to 16, I worked at Aldéa Immobilier, an independent estate agency at 143 Rue Cuvier (69006). I learned how property sales and rentals are handled, and I saw how important it is to build trust with clients.
-
-The following week, from June 17 to 23, I joined Caisse d'Epargne Rhône Alpes at its headquarters in the Tour Incity (116 Cours Lafayette, 69003). I got a better understanding of how a bank works, especially its financial, marketing and sales sides.
-
-Both internships increased my interest in finance and real estate. They also taught me to be punctual, adaptable and a good team player.
-
----` | Tes stages et jobs (page About). Ajoute ou supprime des blocs `{ … },` |
+| `contactEmail` | Adresse de contact affichée sur le site |
+| `social` | Liens LinkedIn / Instagram / X (vide = masqué) |
+| `experiencesIntro`, `experiences`, `experiencesConclusion` | Tes stages (page About) : phrase d'intro, un bloc `{ … },` par stage, phrase de conclusion |
 | `subscribe` | Branchement du formulaire d'inscription (étape 3) |
 
 ⚠️ Garde bien les guillemets `"…"` et les virgules en fin de ligne. Si le site affiche
@@ -104,7 +96,7 @@ Le site crée tout seul la page de l'article, l'ajoute aux archives et met à jo
 5. Clique sur **Commit changes**. Le numéro est en ligne 1 à 2 minutes plus tard.
 
 **Programmer à l'avance** : si tu mets une date future (le dimanche suivant), l'article reste
-caché et se publie tout seul ce dimanche-là vers 8 h (9 h en heure d'été).
+caché et se publie tout seul ce dimanche-là vers 10 h (11 h en heure d'été).
 Tu peux donc l'écrire le samedi soir.
 
 **Mise en forme dans le texte**
@@ -130,7 +122,7 @@ Les fichiers qui commencent par `_` ne sont jamais publiés (pratique pour un br
 > garde-le, modifie-le ou supprime-le.
 
 **Envoyer le numéro par email** : le site ne l'envoie pas tout seul. Colle le même texte dans ton outil
-de newsletter (Substack, Buttondown…) et programme l'envoi pour dimanche 8 h.
+de newsletter (Substack, Buttondown…) et programme l'envoi pour dimanche 10 h.
 
 ### Changer le Chart of the Week
 - **Les données** : dans `js/main.js`, cherche `CHARTS`. Tu y trouves les années (`x`), les valeurs de chaque courbe (`values`), leur nom (`label`) et les bornes de l'axe (`yMin`, `yMax`).

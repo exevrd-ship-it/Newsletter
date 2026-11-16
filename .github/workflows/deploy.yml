@@ -5,10 +5,10 @@ name: Publish website
 on:
   push:
   workflow_dispatch:
-  # Every Sunday at 07:00 UTC (8:00 in Paris in winter, 9:00 in summer):
+  # Every Sunday at 09:00 UTC (10:00 in Paris in winter, 11:00 in summer):
   # publishes issues that were written in advance with a future date.
   schedule:
-    - cron: "0 7 * * 0"
+    - cron: "0 9 * * 0"
 
 permissions:
   contents: read
