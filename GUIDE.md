@@ -21,15 +21,8 @@ Ouvre **`config.js`**, à la racine du dépôt. C'est le **seul fichier** à mod
 | `author.photo` | Ta photo (facultatif) : dépose-la dans `assets/` (bouton *Add file → Upload files*), puis écris `"assets/nom-de-ta-photo.jpg"` |
 | `econ.explained23@gmail.com` | Adresse de contact affichée sur le site |
 | `Liens LinkedIn : Tom Lyaudet / Instagram : econ_explained23 / X : Econ.explained_` | Liens LinkedIn / Instagram  / X |
-|In June 2024, I did two internships in Lyon, which gave me a good insight into the professional world.
-
-From June 10 to 16, I worked at Aldéa Immobilier, an independent estate agency at 143 Rue Cuvier (69006). I learned how property sales and rentals are handled, and I saw how important it is to build trust with clients.
-
-The following week, from June 17 to 23, I joined Caisse d'Epargne Rhône Alpes at its headquarters in the Tour Incity (116 Cours Lafayette, 69003). I got a better understanding of how a bank works, especially its financial, marketing and sales sides.
-
-Both internships increased my interest in finance and real estate. They also taught me to be punctual, adaptable and a good team player.
-
----` | Tes stages et jobs (page About). Ajoute ou supprime des blocs `{ … },` |
+| ` |In June 2024, I did two internships in Lyon, which gave me a good insight into the professional world.
+From June 10 to 16, I worked at Aldéa Immobilier, an independent estate agency at 143 Rue Cuvier (69006). I learned how property sales and rentals are handled, and I saw how important it is to build trust with clients. The following week, from June 17 to 23, I joined Caisse d'Epargne Rhône Alpes at its headquarters in the Tour Incity (116 Cours Lafayette, 69003). I got a better understanding of how a bank works, especially its financial, marketing and sales sides. Both internships increased my interest in finance and real estate. They also taught me to be punctual, adaptable and a good team player. `{ … },` |
 | `subscribe` | Branchement du formulaire d'inscription (étape 3) |
 
 ⚠️ Garde bien les guillemets `"…"` et les virgules en fin de ligne. Si le site affiche
